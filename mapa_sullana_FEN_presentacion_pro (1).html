@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_484aaa318c90835fce965164beefe825 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+</head>
+<body>
+    
+    
+<div id="panel">
+  <div class="brand">
+    <div class="kicker">PROYECTO ESCOLAR • GESTIÓN DEL RIESGO</div>
+    <div class="title">MAPA DE SULLANA</div>
+    <div class="subtitle">FEN · peligros · vulnerabilidad · elementos expuestos · propuesta</div>
+  </div>
+
+  <div class="modebar">
+    <button onclick="setMode('explorar')" id="btnExplorar" class="active">🗺️ Explorar</button>
+    <button onclick="setMode('presentar')" id="btnPresentar">🎤 Presentar</button>
+  </div>
+
+  <div id="explorar">
+    <div class="section">
+      <div class="sectionTitle">📌 ¿Qué muestra?</div>
+      <p>Los puntos numerados corresponden a puntos críticos identificados en el PPRRD de Sullana: <b>12 pluviales y 2 fluviales</b>.</p>
+    </div>
+
+    <div class="stats">
+      <div><b>14</b><span>puntos críticos</span></div>
+      <div><b>12</b><span>pluviales</span></div>
+      <div><b>2</b><span>fluviales</span></div>
+      <div><b>5</b><span>sectores históricos INDECI</span></div>
+    </div>
+
+    <div class="legend">
+      <div class="sectionTitle">🎨 Leyenda</div>
+      <div><span class="dot orange"></span> Peligro pluvial</div>
+      <div><span class="dot blue"></span> Peligro fluvial</div>
+      <div><span class="dot red"></span> Vulnerabilidad histórica</div>
+      <div><span class="dot purple"></span> Elemento expuesto</div>
+      <div><span class="dot green"></span> Propuesta prioritaria</div>
+      <small>Los círculos rojos son referencias educativas; no son límites oficiales.</small>
+    </div>
+
+    <div class="section">
+      <div class="sectionTitle">🔎 Diagnóstico</div>
+      <p>La relación clave es <b>peligro + exposición + vulnerabilidad</b>. Una lluvia intensa puede convertirse en un problema mayor cuando el agua encuentra drenaje insuficiente y afecta viviendas, vías, escuelas, puentes o servicios.</p>
+    </div>
+
+    <div class="section highlight">
+      <div class="sectionTitle">⚠️ Problema priorizado</div>
+      <p><b>Inundación y anegamiento en sectores críticos del eje Cieneguillo–Canal Vía</b>, con posible afectación a población, movilidad y servicios.</p>
+    </div>
+
+    <div class="section proposal">
+      <div class="sectionTitle">🌱 Propuesta concreta</div>
+      <p><b>Plan preventivo Cieneguillo–Canal Vía:</b></p>
+      <ol>
+        <li>Inspeccionar y limpiar puntos críticos antes de lluvias.</li>
+        <li>Descolmatar y mantener estructuras de drenaje.</li>
+        <li>Colocar señalización de rutas seguras y zonas de reunión.</li>
+        <li>Realizar simulacros y difusión vecinal/escolar.</li>
+        <li>Monitorear y corregir puntos que vuelvan a presentar acumulación.</li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <div class="sectionTitle">👥 Responsables</div>
+      <p>Municipalidad Provincial de Sullana + gestión del riesgo + servicios públicos + instituciones educativas y de salud + población organizada.</p>
+    </div>
+
+    <div class="section">
+      <div class="sectionTitle">💰 Presupuesto referencial escolar</div>
+      <div class="budget"><span>Diagnóstico e inspección</span><b>S/ 12,000</b></div>
+      <div class="budget"><span>Limpieza/descolmatación</span><b>S/ 60,000</b></div>
+      <div class="budget"><span>Reparaciones menores</span><b>S/ 45,000</b></div>
+      <div class="budget"><span>Señalización</span><b>S/ 12,000</b></div>
+      <div class="budget"><span>Comunicación/simulacros</span><b>S/ 6,000</b></div>
+      <div class="budget"><span>Contingencia</span><b>S/ 15,000</b></div>
+      <div class="total"><span>Total referencial</span><b>S/ 150,000</b></div>
+      <small>Estimación para el proyecto escolar; no representa un presupuesto oficial.</small>
+    </div>
+
+    <div class="section impact">
+      <div class="sectionTitle">📈 Impacto esperado</div>
+      <ul>
+        <li>Reducir acumulación de agua en puntos intervenidos.</li>
+        <li>Mejorar la preparación de escuelas, familias y servicios.</li>
+        <li>Disminuir interrupciones de movilidad y atención.</li>
+        <li>Detectar rápidamente nuevos puntos problemáticos.</li>
+      </ul>
+    </div>
+
+    <div class="sources">
+      <b>Fuentes principales</b>
+      <p>• PPRRD Sullana 2025–2030 / SIGRID-CENEPRED.</p>
+      <p>• INDECI: levantamiento de sectores vulnerables ante inundación en Sullana (2015).</p>
+      <p>• ENFEN/SENAMHI para contexto del Fenómeno El Niño.</p>
+      <p>• Municipalidad Provincial de Sullana: planificación y gestión del riesgo.</p>
+    </div>
+  </div>
+
+  <div id="presentar" style="display:none">
+    <div class="presentationIntro">
+      <b>Modo exposición 🎤</b>
+      <p>Usa los botones para seguir el orden de tu exposición sin perderte.</p>
+    </div>
+    <div class="step" onclick="goStep(1)"><b>1. Peligros</b><span>🟠🔵</span><small>Ubica los puntos críticos.</small></div>
+    <div class="step" onclick="goStep(2)"><b>2. Vulnerabilidad</b><span>🔴</span><small>Relaciona peligro y población expuesta.</small></div>
+    <div class="step" onclick="goStep(3)"><b>3. Elementos expuestos</b><span>🏫</span><small>Escuela, hospital, puentes y vías.</small></div>
+    <div class="step" onclick="goStep(4)"><b>4. Problema</b><span>⚠️</span><small>Inundación y anegamiento en sectores críticos.</small></div>
+    <div class="step" onclick="goStep(5)"><b>5. Propuesta</b><span>🌱</span><small>Prevención Cieneguillo–Canal Vía.</small></div>
+    <div class="step" onclick="goStep(6)"><b>6. Impacto</b><span>📈</span><small>Preparación, continuidad y reducción de afectación.</small></div>
+
+    <div id="scriptBox" class="script">
+      <b>Guion para empezar:</b>
+      <p>“En este mapa podemos observar los principales puntos críticos de Sullana relacionados con inundaciones pluviales y fluviales. Luego vamos a relacionarlos con las zonas vulnerables y los elementos expuestos.”</p>
+    </div>
+  </div>
+</div>
+
+<div id="panelToggle" onclick="togglePanel()">☰</div>
+
+<style>
+#panel{
+ position:fixed;left:12px;top:12px;bottom:12px;width:355px;z-index:9999;
+ background:rgba(255,255,255,.97);border-radius:16px;
+ box-shadow:0 4px 22px rgba(0,0,0,.22);overflow:auto;
+ font-family:Arial,Helvetica,sans-serif;color:#263238;
+}
+.brand{padding:18px 18px 14px;background:linear-gradient(135deg,#0d47a1,#1565c0);color:white}
+.kicker{font-size:10px;letter-spacing:1.1px;opacity:.85}
+.title{font-size:25px;font-weight:800;margin-top:4px}
+.subtitle{font-size:12px;line-height:1.4;margin-top:5px}
+.modebar{display:flex;padding:8px;border-bottom:1px solid #ddd;background:#fafafa}
+.modebar button{flex:1;border:0;padding:9px;border-radius:9px;background:#e9eef3;cursor:pointer;font-weight:700}
+.modebar button.active{background:#1565c0;color:white}
+.section{padding:12px 16px;border-bottom:1px solid #eee;font-size:12.5px;line-height:1.45}
+.section p{margin:6px 0}
+.sectionTitle{font-weight:800;font-size:14px;margin-bottom:4px}
+.stats{display:grid;grid-template-columns:1fr 1fr;padding:10px;gap:8px}
+.stats div{background:#f4f7fa;border-radius:10px;padding:9px;text-align:center}
+.stats b{display:block;font-size:21px;color:#1565c0}
+.stats span{font-size:10px;color:#546e7a}
+.legend div{margin:6px 0}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.orange{background:#f28c28}.blue{background:#1976d2}.red{background:#d32f2f}.purple{background:#7b1fa2}.green{background:#2e7d32}
+.highlight{background:#fff7e6}.proposal{background:#edf8ef}.impact{background:#eef6ff}
+.highlight .sectionTitle{color:#b45309}.proposal .sectionTitle{color:#2e7d32}.impact .sectionTitle{color:#1565c0}
+ol,ul{margin:6px 0 0 18px;padding:0}
+.budget{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px dashed #ddd}
+.total{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;color:#1565c0}
+.sources{padding:12px 16px;background:#263238;color:#fff;font-size:10px;line-height:1.35}
+.sources p{margin:4px 0}
+small{font-size:10px;color:#607d8b}
+.presentationIntro{padding:14px;background:#eef6ff;font-size:12px}
+.step{margin:9px 12px;padding:12px;border:1px solid #d7dee5;border-radius:12px;background:white;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.step:hover{background:#f4f8fc}
+.step b{font-size:14px}.step span{float:right;font-size:18px}.step small{display:block;margin-top:4px}
+.script{margin:12px;padding:13px;background:#fff8e1;border-left:4px solid #ffb300;border-radius:8px;font-size:12px;line-height:1.45}
+#panelToggle{position:fixed;left:380px;top:18px;z-index:10000;background:white;width:38px;height:38px;border-radius:50%;
+box-shadow:0 2px 8px rgba(0,0,0,.25);text-align:center;line-height:38px;font-size:20px;cursor:pointer}
+.leaflet-control-layers{font-family:Arial!important;font-size:12px!important}
+@media(max-width:700px){
+ #panel{width:calc(100% - 24px);max-height:52vh;bottom:auto}
+ #panelToggle{left:auto;right:16px;top:calc(52vh + 18px)}
+}
+</style>
+
+<script>
+function togglePanel(){
+  const p=document.getElementById('panel');
+  const b=document.getElementById('panelToggle');
+  if(p.style.display==='none'){p.style.display='block';b.innerHTML='☰';}
+  else{p.style.display='none';b.innerHTML='➤';}
+}
+function setMode(mode){
+  document.getElementById('explorar').style.display = mode==='explorar'?'block':'none';
+  document.getElementById('presentar').style.display = mode==='presentar'?'block':'none';
+  document.getElementById('btnExplorar').classList.toggle('active',mode==='explorar');
+  document.getElementById('btnPresentar').classList.toggle('active',mode==='presentar');
+}
+function goStep(step){
+  const box=document.getElementById('scriptBox');
+  const scripts={
+    1:"“Primero observamos los peligros. En naranja están los puntos críticos de inundación pluvial y en azul los puntos críticos asociados a inundación fluvial.”",
+    2:"“Ahora relacionamos esos peligros con la vulnerabilidad. Las zonas rojas representan sectores identificados como vulnerables en información histórica de INDECI. No son límites oficiales actuales.”",
+    3:"“Aquí vemos elementos que pueden quedar expuestos: una institución educativa, un establecimiento de salud, puentes y vías. Por eso el riesgo no afecta solamente a las viviendas.”",
+    4:"“El problema que priorizamos es la inundación y el anegamiento en sectores críticos, porque puede afectar a la población, la movilidad y la continuidad de servicios.”",
+    5:"“Nuestra propuesta es un plan preventivo centrado en inspección, limpieza y descolmatación, señalización, simulacros, comunicación y monitoreo.”",
+    6:"“Esperamos mejorar la preparación y reducir la afectación en los puntos intervenidos. El objetivo no es eliminar el peligro, sino disminuir la exposición y la vulnerabilidad.”"
+  };
+  box.innerHTML="<b>Paso "+step+"</b><p>"+scripts[step]+"</p>";
+}
+</script>
+    <title>MAPA DE SULLANA — FEN, PELIGROS, VULNERABILIDAD Y PROPUESTA</title>
+    
+            <div class="folium-map" id="map_484aaa318c90835fce965164beefe825" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_484aaa318c90835fce965164beefe825 = L.map(
+                "map_484aaa318c90835fce965164beefe825",
+                {
+                    center: [-4.903, -80.69],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_484aaa318c90835fce965164beefe825);
+
+            
+
+        
+    
+            var tile_layer_a3a45630b1bfcb92fbd498c8360333eb = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri, HERE, Garmin, \u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a3a45630b1bfcb92fbd498c8360333eb.addTo(map_484aaa318c90835fce965164beefe825);
+        
+    
+            var tile_layer_5b5988ed8be0a4a516dd5f5d9db1a50b = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri World Imagery",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5b5988ed8be0a4a516dd5f5d9db1a50b.addTo(map_484aaa318c90835fce965164beefe825);
+        
+    
+            var feature_group_794f14ba938ee2260177de914417d526 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_45761dca11824d7463505524a66d99dd = L.marker(
+                [-4.914289550201317, -80.68789802336393],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_f318f60763fbd47ebac0c39479687a7d = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e1\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_44e859a33d18cf2888d449ff7a5a7223 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_0c2b5c632574bc6d1af83ba9d8f9bcce = $(`<div id="html_0c2b5c632574bc6d1af83ba9d8f9bcce" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #1</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Canal Vía – Cieneguillo<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_44e859a33d18cf2888d449ff7a5a7223.setContent(html_0c2b5c632574bc6d1af83ba9d8f9bcce);
+            
+        
+
+        marker_45761dca11824d7463505524a66d99dd.bindPopup(popup_44e859a33d18cf2888d449ff7a5a7223)
+        ;
+
+        
+    
+    
+            marker_45761dca11824d7463505524a66d99dd.bindTooltip(
+                `<div>
+                     #1 • Canal Vía – Cieneguillo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_45761dca11824d7463505524a66d99dd.setIcon(div_icon_f318f60763fbd47ebac0c39479687a7d);
+            
+    
+            var marker_897caeebbeef95e7f2d6ead25a0ff1d0 = L.marker(
+                [-4.910466436147587, -80.6812695694774],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_21b773f1b06920460a8aae61b43acc76 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e2\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_3feccea7251b646d522e8f2bbb2462b3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_129e6be49af0d9b70eef02f3d763925b = $(`<div id="html_129e6be49af0d9b70eef02f3d763925b" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #2</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Calle 13 de Diciembre y Vargas Machuca – El Obrero Sector A<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_3feccea7251b646d522e8f2bbb2462b3.setContent(html_129e6be49af0d9b70eef02f3d763925b);
+            
+        
+
+        marker_897caeebbeef95e7f2d6ead25a0ff1d0.bindPopup(popup_3feccea7251b646d522e8f2bbb2462b3)
+        ;
+
+        
+    
+    
+            marker_897caeebbeef95e7f2d6ead25a0ff1d0.bindTooltip(
+                `<div>
+                     #2 • Calle 13 de Diciembre y Vargas Machuca – El Obrero Sector A
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_897caeebbeef95e7f2d6ead25a0ff1d0.setIcon(div_icon_21b773f1b06920460a8aae61b43acc76);
+            
+    
+            var marker_0f93c03d221cb519b77af5b4d493c9c6 = L.marker(
+                [-4.898087641285695, -80.67080409517567],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_cfca51de2f58b0c06be8fc37c049addb = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e3\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_fd283b4bb7456432cfde6e51e9c58755 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3866e951640fe1141ace6fdbbe00deb1 = $(`<div id="html_3866e951640fe1141ace6fdbbe00deb1" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #3</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Av. Jorge Chávez hasta Dren San Bernardo<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_fd283b4bb7456432cfde6e51e9c58755.setContent(html_3866e951640fe1141ace6fdbbe00deb1);
+            
+        
+
+        marker_0f93c03d221cb519b77af5b4d493c9c6.bindPopup(popup_fd283b4bb7456432cfde6e51e9c58755)
+        ;
+
+        
+    
+    
+            marker_0f93c03d221cb519b77af5b4d493c9c6.bindTooltip(
+                `<div>
+                     #3 • Av. Jorge Chávez hasta Dren San Bernardo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f93c03d221cb519b77af5b4d493c9c6.setIcon(div_icon_cfca51de2f58b0c06be8fc37c049addb);
+            
+    
+            var marker_b9c9d4c93c85c103b14d61d4abf238f7 = L.marker(
+                [-4.913076060031325, -80.66407991896806],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_018db611e0b2408394b06d82c5fe3076 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e4\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_ce4f2c68608790c5e6562ed61b703350 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7d0375865f0bedcacac2b2d31ab9973f = $(`<div id="html_7d0375865f0bedcacac2b2d31ab9973f" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #4</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Ampliación Urb. Popular Villa La Paz<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_ce4f2c68608790c5e6562ed61b703350.setContent(html_7d0375865f0bedcacac2b2d31ab9973f);
+            
+        
+
+        marker_b9c9d4c93c85c103b14d61d4abf238f7.bindPopup(popup_ce4f2c68608790c5e6562ed61b703350)
+        ;
+
+        
+    
+    
+            marker_b9c9d4c93c85c103b14d61d4abf238f7.bindTooltip(
+                `<div>
+                     #4 • Ampliación Urb. Popular Villa La Paz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b9c9d4c93c85c103b14d61d4abf238f7.setIcon(div_icon_018db611e0b2408394b06d82c5fe3076);
+            
+    
+            var marker_86fe1ae0030696060b0a0eee173c929e = L.marker(
+                [-4.919893984711026, -80.66147046913039],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_724166d58cff15e6af5f1e07a5cb9b59 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e5\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_21a80a5beb53b9bf077b7c7127830a0d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_940521b6168ce1ba51ca3769e3787c65 = $(`<div id="html_940521b6168ce1ba51ca3769e3787c65" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #5</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Calle José Carlos Mariátegui – Los Olivos<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_21a80a5beb53b9bf077b7c7127830a0d.setContent(html_940521b6168ce1ba51ca3769e3787c65);
+            
+        
+
+        marker_86fe1ae0030696060b0a0eee173c929e.bindPopup(popup_21a80a5beb53b9bf077b7c7127830a0d)
+        ;
+
+        
+    
+    
+            marker_86fe1ae0030696060b0a0eee173c929e.bindTooltip(
+                `<div>
+                     #5 • Calle José Carlos Mariátegui – Los Olivos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_86fe1ae0030696060b0a0eee173c929e.setIcon(div_icon_724166d58cff15e6af5f1e07a5cb9b59);
+            
+    
+            var marker_de3a394a8f71fb8013a5400152910483 = L.marker(
+                [-4.923990319049201, -80.66467506797825],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_4b54d06bf4e5352fcf680906f13d6e88 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e6\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_4782367de06cd4d53767ab9109f6d1f6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a4e10a1a915ce8ebd9319f9f76a21285 = $(`<div id="html_a4e10a1a915ce8ebd9319f9f76a21285" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #6</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Calle Chavín de Huántar – Ampliación Los Olivos<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_4782367de06cd4d53767ab9109f6d1f6.setContent(html_a4e10a1a915ce8ebd9319f9f76a21285);
+            
+        
+
+        marker_de3a394a8f71fb8013a5400152910483.bindPopup(popup_4782367de06cd4d53767ab9109f6d1f6)
+        ;
+
+        
+    
+    
+            marker_de3a394a8f71fb8013a5400152910483.bindTooltip(
+                `<div>
+                     #6 • Calle Chavín de Huántar – Ampliación Los Olivos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_de3a394a8f71fb8013a5400152910483.setIcon(div_icon_4b54d06bf4e5352fcf680906f13d6e88);
+            
+    
+            var marker_1013c565f070fe7844463828f5a55c97 = L.marker(
+                [-4.912777762912807, -80.67888885095397],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_f5c6c30ee57e93581adbb970ee863550 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e7\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_171da5f017f763fa8c91b3606de50032 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_1a824d8cc25edd6074e4c208a4d31c41 = $(`<div id="html_1a824d8cc25edd6074e4c208a4d31c41" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #7</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Av. Buenos Aires – ENOSA – Mercado Mayorista – Parque Industrial<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_171da5f017f763fa8c91b3606de50032.setContent(html_1a824d8cc25edd6074e4c208a4d31c41);
+            
+        
+
+        marker_1013c565f070fe7844463828f5a55c97.bindPopup(popup_171da5f017f763fa8c91b3606de50032)
+        ;
+
+        
+    
+    
+            marker_1013c565f070fe7844463828f5a55c97.bindTooltip(
+                `<div>
+                     #7 • Av. Buenos Aires – ENOSA – Mercado Mayorista – Parque Industrial
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1013c565f070fe7844463828f5a55c97.setIcon(div_icon_f5c6c30ee57e93581adbb970ee863550);
+            
+    
+            var marker_00cfea8ef1d0d4799e450b342b154139 = L.marker(
+                [-4.9110107114268144, -80.68960035684212],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_de54b944f7cd1d68a6e997414ca85b8e = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e8\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_03a190e6e0d9b358beffe6fa3cc5c4f2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_27a26ea4fe38a1ba473c57c04aec603a = $(`<div id="html_27a26ea4fe38a1ba473c57c04aec603a" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #8</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> San Hilarión – A.H. José Carlos Mariátegui<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_03a190e6e0d9b358beffe6fa3cc5c4f2.setContent(html_27a26ea4fe38a1ba473c57c04aec603a);
+            
+        
+
+        marker_00cfea8ef1d0d4799e450b342b154139.bindPopup(popup_03a190e6e0d9b358beffe6fa3cc5c4f2)
+        ;
+
+        
+    
+    
+            marker_00cfea8ef1d0d4799e450b342b154139.bindTooltip(
+                `<div>
+                     #8 • San Hilarión – A.H. José Carlos Mariátegui
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_00cfea8ef1d0d4799e450b342b154139.setIcon(div_icon_de54b944f7cd1d68a6e997414ca85b8e);
+            
+    
+            var marker_633e1800dfc5d0a9bdf18c690fff7672 = L.marker(
+                [-4.899935410753066, -80.7029216627741],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_dca7b35102b3a4a428ad2dec73aaeaf1 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e9\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_d1b250298399c010294632217b205116 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e30a314bfeefad232ebc2128301a6bb9 = $(`<div id="html_e30a314bfeefad232ebc2128301a6bb9" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #9</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Calle Juan Bosco y El Alto – Urb. Loma de Teodomiro<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_d1b250298399c010294632217b205116.setContent(html_e30a314bfeefad232ebc2128301a6bb9);
+            
+        
+
+        marker_633e1800dfc5d0a9bdf18c690fff7672.bindPopup(popup_d1b250298399c010294632217b205116)
+        ;
+
+        
+    
+    
+            marker_633e1800dfc5d0a9bdf18c690fff7672.bindTooltip(
+                `<div>
+                     #9 • Calle Juan Bosco y El Alto – Urb. Loma de Teodomiro
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_633e1800dfc5d0a9bdf18c690fff7672.setIcon(div_icon_dca7b35102b3a4a428ad2dec73aaeaf1);
+            
+    
+            var marker_f9035213829a1b6302e73a84e92de171 = L.marker(
+                [-4.90555555730996, -80.70555556407334],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_1c6bfa253db381300252df3bc93d038c = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e10\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_9463ace215ed621c246f5be6d4ffca44 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_218fa78c352f57b65c25b793b703c51b = $(`<div id="html_218fa78c352f57b65c25b793b703c51b" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #10</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Carretera Sullana – Paita<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_9463ace215ed621c246f5be6d4ffca44.setContent(html_218fa78c352f57b65c25b793b703c51b);
+            
+        
+
+        marker_f9035213829a1b6302e73a84e92de171.bindPopup(popup_9463ace215ed621c246f5be6d4ffca44)
+        ;
+
+        
+    
+    
+            marker_f9035213829a1b6302e73a84e92de171.bindTooltip(
+                `<div>
+                     #10 • Carretera Sullana – Paita
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f9035213829a1b6302e73a84e92de171.setIcon(div_icon_1c6bfa253db381300252df3bc93d038c);
+            
+    
+            var marker_3137a294216a903fd01d67d96cfd9760 = L.marker(
+                [-4.902917802318161, -80.71951336708938],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_30a9be5cd3c569198b9c580747537504 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e11\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_8ed78bb04ebfa9f071bfb28451897910 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_cea8278742948b87ac52e93834ca9242 = $(`<div id="html_cea8278742948b87ac52e93834ca9242" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #11</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Calle Alfonso Romero y Camino – Calle Flora Córdova – Virgen de las Mercedes<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_8ed78bb04ebfa9f071bfb28451897910.setContent(html_cea8278742948b87ac52e93834ca9242);
+            
+        
+
+        marker_3137a294216a903fd01d67d96cfd9760.bindPopup(popup_8ed78bb04ebfa9f071bfb28451897910)
+        ;
+
+        
+    
+    
+            marker_3137a294216a903fd01d67d96cfd9760.bindTooltip(
+                `<div>
+                     #11 • Calle Alfonso Romero y Camino – Calle Flora Córdova – Virgen de las Mercedes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3137a294216a903fd01d67d96cfd9760.setIcon(div_icon_30a9be5cd3c569198b9c580747537504);
+            
+    
+            var marker_e6bc0f7ece509188d017cc487b55920b = L.marker(
+                [-4.897941427924295, -80.68716143153915],
+                {
+}
+            ).addTo(feature_group_794f14ba938ee2260177de914417d526);
+        
+    
+            var div_icon_cff0fd90e85ede7488cb7873f1f39775 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#f28c28;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e12\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_253e901a61c43d95cb93ad01cf25da48 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_beaf898a2c06287ddd049f82d60f3510 = $(`<div id="html_beaf898a2c06287ddd049f82d60f3510" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #12</b><br>         <b>Tipo:</b> Inundación pluvial<br>         <b>Ubicación:</b> Puente peatonal Canal Vía – Transversal Piura<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana         para la identificación de sectores críticos. Debe interpretarse junto         con el drenaje, vías y población expuesta.         </div>         </div>`)[0];
+                popup_253e901a61c43d95cb93ad01cf25da48.setContent(html_beaf898a2c06287ddd049f82d60f3510);
+            
+        
+
+        marker_e6bc0f7ece509188d017cc487b55920b.bindPopup(popup_253e901a61c43d95cb93ad01cf25da48)
+        ;
+
+        
+    
+    
+            marker_e6bc0f7ece509188d017cc487b55920b.bindTooltip(
+                `<div>
+                     #12 • Puente peatonal Canal Vía – Transversal Piura
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e6bc0f7ece509188d017cc487b55920b.setIcon(div_icon_cff0fd90e85ede7488cb7873f1f39775);
+            
+    
+            feature_group_794f14ba938ee2260177de914417d526.addTo(map_484aaa318c90835fce965164beefe825);
+        
+    
+            var feature_group_7c605821efee2c946a59c212f830b3db = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_1e9e10c8a2702abedef6398667cca72d = L.marker(
+                [-4.923145007077614, -80.66501877918985],
+                {
+}
+            ).addTo(feature_group_7c605821efee2c946a59c212f830b3db);
+        
+    
+            var div_icon_1bbf9b9f43f907e403651e8a442caa20 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#1976d2;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e13\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_af0a37dbcc8c60867d921ef040799baf = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_cfeaeb1df5fe1ae9e781e247fd6ae5f0 = $(`<div id="html_cfeaeb1df5fe1ae9e781e247fd6ae5f0" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #13</b><br>         <b>Tipo:</b> Inundación fluvial<br>         <b>Ubicación:</b> Qda. Ampliación Los Olivos – Calle Chavín de Huántar<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana.         En esta capa se diferencia el peligro asociado a cauces/drenes del         peligro pluvial.         </div>         </div>`)[0];
+                popup_af0a37dbcc8c60867d921ef040799baf.setContent(html_cfeaeb1df5fe1ae9e781e247fd6ae5f0);
+            
+        
+
+        marker_1e9e10c8a2702abedef6398667cca72d.bindPopup(popup_af0a37dbcc8c60867d921ef040799baf)
+        ;
+
+        
+    
+    
+            marker_1e9e10c8a2702abedef6398667cca72d.bindTooltip(
+                `<div>
+                     #13 • Qda. Ampliación Los Olivos – Calle Chavín de Huántar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1e9e10c8a2702abedef6398667cca72d.setIcon(div_icon_1bbf9b9f43f907e403651e8a442caa20);
+            
+    
+            var marker_3d2efd0d1074875e13c0a4bfa610c89d = L.marker(
+                [-4.9130129879133415, -80.7072319145139],
+                {
+}
+            ).addTo(feature_group_7c605821efee2c946a59c212f830b3db);
+        
+    
+            var div_icon_1f8c878a990e5d2b7223096e7ebe2578 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n            background:#1976d2;color:white;border:2px solid white;\n            border-radius:50%;width:27px;height:27px;text-align:center;\n            line-height:23px;font-weight:bold;font-size:12px;\n            box-shadow:0 1px 5px #555;\"\u003e14\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+        var popup_b9a294353c9ae2e16e9cc2d63b8e16b1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_895055df44a25dc06b41736a643df4ca = $(`<div id="html_895055df44a25dc06b41736a643df4ca" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:280px">         <b style="font-size:16px">Punto crítico #14</b><br>         <b>Tipo:</b> Inundación fluvial<br>         <b>Ubicación:</b> Cauce del Dren Cola del Alacrán – Urbanización Jardín<br><br>         <b>Lectura para el proyecto:</b> punto reportado en el PPRRD de Sullana.         En esta capa se diferencia el peligro asociado a cauces/drenes del         peligro pluvial.         </div>         </div>`)[0];
+                popup_b9a294353c9ae2e16e9cc2d63b8e16b1.setContent(html_895055df44a25dc06b41736a643df4ca);
+            
+        
+
+        marker_3d2efd0d1074875e13c0a4bfa610c89d.bindPopup(popup_b9a294353c9ae2e16e9cc2d63b8e16b1)
+        ;
+
+        
+    
+    
+            marker_3d2efd0d1074875e13c0a4bfa610c89d.bindTooltip(
+                `<div>
+                     #14 • Cauce del Dren Cola del Alacrán – Urbanización Jardín
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d2efd0d1074875e13c0a4bfa610c89d.setIcon(div_icon_1f8c878a990e5d2b7223096e7ebe2578);
+            
+    
+            feature_group_7c605821efee2c946a59c212f830b3db.addTo(map_484aaa318c90835fce965164beefe825);
+        
+    
+            var feature_group_94345d9a423e930e7754d09b4a8058f1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_8a0472e9d662c8fd76246f1f5902d4fd = L.circle(
+                [-4.907013, -80.688878],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 260, "stroke": true, "weight": 2}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+        var popup_c7b823d7eed190e52a17f5801fe47b14 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_d450a15eb22e3d15247d29d5b2851fc1 = $(`<div id="html_d450a15eb22e3d15247d29d5b2851fc1" style="width: 100.0%; height: 100.0%;">             <div style="font-family:Arial; width:300px">             <b style="font-size:16px">Quebrada Cieneguillo – Puente Santa Cruz</b><br>             <b>Registro:</b> Alta / muy alta (registro histórico INDECI 2015)<br>             <b>Elementos expuestos:</b> Viviendas, puente Santa Cruz y compuerta de riego<br>             <b>Dato:</b> Aprox. 189 viviendas y 945 personas en el levantamiento de 2015.<br><br>             <small>Los datos son históricos (levantamiento INDECI 2015).             El círculo es una referencia visual educativa y NO representa un             límite oficial de inundación.</small>             </div>             </div>`)[0];
+                popup_c7b823d7eed190e52a17f5801fe47b14.setContent(html_d450a15eb22e3d15247d29d5b2851fc1);
+            
+        
+
+        circle_8a0472e9d662c8fd76246f1f5902d4fd.bindPopup(popup_c7b823d7eed190e52a17f5801fe47b14)
+        ;
+
+        
+    
+    
+            circle_8a0472e9d662c8fd76246f1f5902d4fd.bindTooltip(
+                `<div>
+                     Quebrada Cieneguillo – Puente Santa Cruz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7cef1cab5a9e48e681c4a67864a66390 = L.marker(
+                [-4.907013, -80.688878],
+                {
+}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+            var icon_a15da17ede718c2e6d0bf36406a044d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "warning-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_7cef1cab5a9e48e681c4a67864a66390.bindTooltip(
+                `<div>
+                     Zona vulnerable: Quebrada Cieneguillo – Puente Santa Cruz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7cef1cab5a9e48e681c4a67864a66390.setIcon(icon_a15da17ede718c2e6d0bf36406a044d2);
+            
+    
+            var circle_f3e31af26b5bb0311bd3d1d5a4c4588b = L.circle(
+                [-4.91425, -80.688156],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 260, "stroke": true, "weight": 2}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+        var popup_21c3e25f38d4871dd9239aea60c0602c = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_521847bc5190983fef0565110b14ffb6 = $(`<div id="html_521847bc5190983fef0565110b14ffb6" style="width: 100.0%; height: 100.0%;">             <div style="font-family:Arial; width:300px">             <b style="font-size:16px">Pista a Tambogrande – Quebrada Cieneguillo</b><br>             <b>Registro:</b> Alta / muy alta (registro histórico INDECI 2015)<br>             <b>Elementos expuestos:</b> Viviendas, actividades económicas y carretera<br>             <b>Dato:</b> Aprox. 122 viviendas y 610 personas en el levantamiento de 2015.<br><br>             <small>Los datos son históricos (levantamiento INDECI 2015).             El círculo es una referencia visual educativa y NO representa un             límite oficial de inundación.</small>             </div>             </div>`)[0];
+                popup_21c3e25f38d4871dd9239aea60c0602c.setContent(html_521847bc5190983fef0565110b14ffb6);
+            
+        
+
+        circle_f3e31af26b5bb0311bd3d1d5a4c4588b.bindPopup(popup_21c3e25f38d4871dd9239aea60c0602c)
+        ;
+
+        
+    
+    
+            circle_f3e31af26b5bb0311bd3d1d5a4c4588b.bindTooltip(
+                `<div>
+                     Pista a Tambogrande – Quebrada Cieneguillo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ec1bb26c4a3813098c86ad54c0443d08 = L.marker(
+                [-4.91425, -80.688156],
+                {
+}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+            var icon_644ddfb45e5075b9ba61ff5dff3a9e80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "warning-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ec1bb26c4a3813098c86ad54c0443d08.bindTooltip(
+                `<div>
+                     Zona vulnerable: Pista a Tambogrande – Quebrada Cieneguillo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ec1bb26c4a3813098c86ad54c0443d08.setIcon(icon_644ddfb45e5075b9ba61ff5dff3a9e80);
+            
+    
+            var circle_89b8e8baa74de02af0d996ff51d772d8 = L.circle(
+                [-4.905275, -80.691394],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 260, "stroke": true, "weight": 2}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+        var popup_79eb5df3aa9309fa0b5d22a96369803e = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_78376b8a26f55f97a011c73fda62c651 = $(`<div id="html_78376b8a26f55f97a011c73fda62c651" style="width: 100.0%; height: 100.0%;">             <div style="font-family:Arial; width:300px">             <b style="font-size:16px">Qda. Cola de Alacrán – Colegio / Hospital</b><br>             <b>Registro:</b> Alta (registro histórico INDECI 2015)<br>             <b>Elementos expuestos:</b> Hospital Nivel I, colegio, puente peatonal y población<br>             <b>Dato:</b> El estudio registró 1,412 estudiantes y 76 docentes en el colegio señalado.<br><br>             <small>Los datos son históricos (levantamiento INDECI 2015).             El círculo es una referencia visual educativa y NO representa un             límite oficial de inundación.</small>             </div>             </div>`)[0];
+                popup_79eb5df3aa9309fa0b5d22a96369803e.setContent(html_78376b8a26f55f97a011c73fda62c651);
+            
+        
+
+        circle_89b8e8baa74de02af0d996ff51d772d8.bindPopup(popup_79eb5df3aa9309fa0b5d22a96369803e)
+        ;
+
+        
+    
+    
+            circle_89b8e8baa74de02af0d996ff51d772d8.bindTooltip(
+                `<div>
+                     Qda. Cola de Alacrán – Colegio / Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_efc987006f850d335796f3c8f44284be = L.marker(
+                [-4.905275, -80.691394],
+                {
+}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+            var icon_5899d64598fedf78b21f5b789c2d9363 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "warning-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_efc987006f850d335796f3c8f44284be.bindTooltip(
+                `<div>
+                     Zona vulnerable: Qda. Cola de Alacrán – Colegio / Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_efc987006f850d335796f3c8f44284be.setIcon(icon_5899d64598fedf78b21f5b789c2d9363);
+            
+    
+            var circle_0b5f9d19bb261fe227a7e248d5369ba9 = L.circle(
+                [-4.910658, -80.702736],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 260, "stroke": true, "weight": 2}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+        var popup_9386ba75b149e89a27c31c2b2a9856d1 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_9c2b916c90e14bf1bae228b6b583888c = $(`<div id="html_9c2b916c90e14bf1bae228b6b583888c" style="width: 100.0%; height: 100.0%;">             <div style="font-family:Arial; width:300px">             <b style="font-size:16px">Qda. Cola de Alacrán</b><br>             <b>Registro:</b> Alta (registro histórico INDECI 2015)<br>             <b>Elementos expuestos:</b> Viviendas y actividades comerciales<br>             <b>Dato:</b> Sector identificado como vulnerable en el levantamiento de 2015.<br><br>             <small>Los datos son históricos (levantamiento INDECI 2015).             El círculo es una referencia visual educativa y NO representa un             límite oficial de inundación.</small>             </div>             </div>`)[0];
+                popup_9386ba75b149e89a27c31c2b2a9856d1.setContent(html_9c2b916c90e14bf1bae228b6b583888c);
+            
+        
+
+        circle_0b5f9d19bb261fe227a7e248d5369ba9.bindPopup(popup_9386ba75b149e89a27c31c2b2a9856d1)
+        ;
+
+        
+    
+    
+            circle_0b5f9d19bb261fe227a7e248d5369ba9.bindTooltip(
+                `<div>
+                     Qda. Cola de Alacrán
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a2bdc8fb2bf5a416e7e8724b2b3841d0 = L.marker(
+                [-4.910658, -80.702736],
+                {
+}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+            var icon_071fefc571765f85eab6b84dd33e9947 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "warning-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_a2bdc8fb2bf5a416e7e8724b2b3841d0.bindTooltip(
+                `<div>
+                     Zona vulnerable: Qda. Cola de Alacrán
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a2bdc8fb2bf5a416e7e8724b2b3841d0.setIcon(icon_071fefc571765f85eab6b84dd33e9947);
+            
+    
+            var circle_f39363afb330693f5784e518771340bb = L.circle(
+                [-4.905486, -80.714725],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 260, "stroke": true, "weight": 2}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+        var popup_f67b6b0a745e9d3c7f36525fc5b2a970 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_5dac55e2355be2369bf39141ea7d01cf = $(`<div id="html_5dac55e2355be2369bf39141ea7d01cf" style="width: 100.0%; height: 100.0%;">             <div style="font-family:Arial; width:300px">             <b style="font-size:16px">La Videnita</b><br>             <b>Registro:</b> Alta (registro histórico INDECI 2015)<br>             <b>Elementos expuestos:</b> Viviendas y población asentada en terreno deprimido<br>             <b>Dato:</b> Aprox. 350 viviendas y 1,750 personas en el levantamiento de 2015.<br><br>             <small>Los datos son históricos (levantamiento INDECI 2015).             El círculo es una referencia visual educativa y NO representa un             límite oficial de inundación.</small>             </div>             </div>`)[0];
+                popup_f67b6b0a745e9d3c7f36525fc5b2a970.setContent(html_5dac55e2355be2369bf39141ea7d01cf);
+            
+        
+
+        circle_f39363afb330693f5784e518771340bb.bindPopup(popup_f67b6b0a745e9d3c7f36525fc5b2a970)
+        ;
+
+        
+    
+    
+            circle_f39363afb330693f5784e518771340bb.bindTooltip(
+                `<div>
+                     La Videnita
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9d5a339d379a46f12c52e738dc2caf5b = L.marker(
+                [-4.905486, -80.714725],
+                {
+}
+            ).addTo(feature_group_94345d9a423e930e7754d09b4a8058f1);
+        
+    
+            var icon_805d3f1d25c00ceb01cf1c10f29177bb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "warning-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_9d5a339d379a46f12c52e738dc2caf5b.bindTooltip(
+                `<div>
+                     Zona vulnerable: La Videnita
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9d5a339d379a46f12c52e738dc2caf5b.setIcon(icon_805d3f1d25c00ceb01cf1c10f29177bb);
+            
+    
+            feature_group_94345d9a423e930e7754d09b4a8058f1.addTo(map_484aaa318c90835fce965164beefe825);
+        
+    
+            var feature_group_ea1ec3bff375ea6101a9bbaa022814c9 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_40feca6475044a47e26e07746c6aaf53 = L.marker(
+                [-4.905275, -80.691394],
+                {
+}
+            ).addTo(feature_group_ea1ec3bff375ea6101a9bbaa022814c9);
+        
+    
+            var icon_9a24191ac1b1a14a33404df5f16c8e41 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ba3e285b741ffbddc8f0438e44ed63e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ed3ca0c29f63e70baf9bff8659995ac = $(`<div id="html_6ed3ca0c29f63e70baf9bff8659995ac" style="width: 100.0%; height: 100.0%;"><b>Hospital Nivel I Sullana</b><br>Elemento expuesto: Salud<br>Se muestra como referencia para analizar vulnerabilidad y continuidad de servicios.</div>`)[0];
+                popup_5ba3e285b741ffbddc8f0438e44ed63e.setContent(html_6ed3ca0c29f63e70baf9bff8659995ac);
+            
+        
+
+        marker_40feca6475044a47e26e07746c6aaf53.bindPopup(popup_5ba3e285b741ffbddc8f0438e44ed63e)
+        ;
+
+        
+    
+    
+            marker_40feca6475044a47e26e07746c6aaf53.bindTooltip(
+                `<div>
+                     Salud: Hospital Nivel I Sullana
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_40feca6475044a47e26e07746c6aaf53.setIcon(icon_9a24191ac1b1a14a33404df5f16c8e41);
+            
+    
+            var marker_0f4b59fdef07312580110cf18be7df03 = L.marker(
+                [-4.905275, -80.691394],
+                {
+}
+            ).addTo(feature_group_ea1ec3bff375ea6101a9bbaa022814c9);
+        
+    
+            var icon_faffc04038ada2d425b9eaafa87da03f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "education",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b8b662ab065153926215c166a76d7d97 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_142043e43ea13c66c847f35f616aa396 = $(`<div id="html_142043e43ea13c66c847f35f616aa396" style="width: 100.0%; height: 100.0%;"><b>Colegio Complejo José Eusebio Merino Vinces</b><br>Elemento expuesto: Educación<br>Se muestra como referencia para analizar vulnerabilidad y continuidad de servicios.</div>`)[0];
+                popup_b8b662ab065153926215c166a76d7d97.setContent(html_142043e43ea13c66c847f35f616aa396);
+            
+        
+
+        marker_0f4b59fdef07312580110cf18be7df03.bindPopup(popup_b8b662ab065153926215c166a76d7d97)
+        ;
+
+        
+    
+    
+            marker_0f4b59fdef07312580110cf18be7df03.bindTooltip(
+                `<div>
+                     Educación: Colegio Complejo José Eusebio Merino Vinces
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f4b59fdef07312580110cf18be7df03.setIcon(icon_faffc04038ada2d425b9eaafa87da03f);
+            
+    
+            var marker_4610afeacf36f5a47709bbdf064f7bb2 = L.marker(
+                [-4.907013, -80.688878],
+                {
+}
+            ).addTo(feature_group_ea1ec3bff375ea6101a9bbaa022814c9);
+        
+    
+            var icon_7451ab50fc01b9b13b9ac90a92d3336e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b6bc803399cc415292534fb24aa3e4a0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6e53dc296bb721f5355c156cf7cf5e15 = $(`<div id="html_6e53dc296bb721f5355c156cf7cf5e15" style="width: 100.0%; height: 100.0%;"><b>Puente Santa Cruz</b><br>Elemento expuesto: Transporte<br>Se muestra como referencia para analizar vulnerabilidad y continuidad de servicios.</div>`)[0];
+                popup_b6bc803399cc415292534fb24aa3e4a0.setContent(html_6e53dc296bb721f5355c156cf7cf5e15);
+            
+        
+
+        marker_4610afeacf36f5a47709bbdf064f7bb2.bindPopup(popup_b6bc803399cc415292534fb24aa3e4a0)
+        ;
+
+        
+    
+    
+            marker_4610afeacf36f5a47709bbdf064f7bb2.bindTooltip(
+                `<div>
+                     Transporte: Puente Santa Cruz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4610afeacf36f5a47709bbdf064f7bb2.setIcon(icon_7451ab50fc01b9b13b9ac90a92d3336e);
+            
+    
+            var marker_cbbcf4ba775dcf42f772eed70be6bcca = L.marker(
+                [-4.91425, -80.688156],
+                {
+}
+            ).addTo(feature_group_ea1ec3bff375ea6101a9bbaa022814c9);
+        
+    
+            var icon_1b1e7208e1929fb9e8416fc189342046 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_552db054cd7722a3aba50303d68c4f9e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d2480f7555ec9adb2012db426cfc661b = $(`<div id="html_d2480f7555ec9adb2012db426cfc661b" style="width: 100.0%; height: 100.0%;"><b>Carretera Sullana – Tambogrande</b><br>Elemento expuesto: Vía<br>Se muestra como referencia para analizar vulnerabilidad y continuidad de servicios.</div>`)[0];
+                popup_552db054cd7722a3aba50303d68c4f9e.setContent(html_d2480f7555ec9adb2012db426cfc661b);
+            
+        
+
+        marker_cbbcf4ba775dcf42f772eed70be6bcca.bindPopup(popup_552db054cd7722a3aba50303d68c4f9e)
+        ;
+
+        
+    
+    
+            marker_cbbcf4ba775dcf42f772eed70be6bcca.bindTooltip(
+                `<div>
+                     Vía: Carretera Sullana – Tambogrande
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cbbcf4ba775dcf42f772eed70be6bcca.setIcon(icon_1b1e7208e1929fb9e8416fc189342046);
+            
+    
+            feature_group_ea1ec3bff375ea6101a9bbaa022814c9.addTo(map_484aaa318c90835fce965164beefe825);
+        
+    
+            var feature_group_65cc1398563029572d7838c0a75bb728 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_6b2c780bf51eb6ed59bb7d458740e69c = L.circleMarker(
+                [-4.907013, -80.688878],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e7d32", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(feature_group_65cc1398563029572d7838c0a75bb728);
+        
+    
+        var popup_a48a1470509e0f5f1ea612a276ffef92 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_5737b533bf26902036aca82d9c5f1fe5 = $(`<div id="html_5737b533bf26902036aca82d9c5f1fe5" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial; width:330px">         <b style="font-size:17px;color:#2e7d32">PLAN PREVENTIVO CIENEGUILLO–CANAL VÍA</b><br><br>         <b>1. Antes de lluvias:</b> inspección, limpieza y descolmatación de puntos críticos.<br>         <b>2. Preparación:</b> señalización de rutas seguras y puntos de reunión.<br>         <b>3. Durante emergencia:</b> monitoreo, comunicación y activación de brigadas.<br>         <b>4. Después:</b> evaluación rápida y mantenimiento correctivo.<br><br>         <b>Actores:</b> Municipalidad Provincial de Sullana, gestión del riesgo,         servicios públicos, instituciones educativas, salud y población organizada.         </div>         </div>`)[0];
+                popup_a48a1470509e0f5f1ea612a276ffef92.setContent(html_5737b533bf26902036aca82d9c5f1fe5);
+            
+        
+
+        circle_marker_6b2c780bf51eb6ed59bb7d458740e69c.bindPopup(popup_a48a1470509e0f5f1ea612a276ffef92)
+        ;
+
+        
+    
+    
+            circle_marker_6b2c780bf51eb6ed59bb7d458740e69c.bindTooltip(
+                `<div>
+                     Propuesta prioritaria: prevención en eje Cieneguillo–Canal Vía
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_5fc18be6800d4eb807a5a7b19cc2ae9a = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_a3ffc7038ddc083c5fc3d18006595fe5 = L.polygon(
+                [[-4.895, -80.716], [-4.895, -80.675], [-4.93, -80.675], [-4.93, -80.716]],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": "7,6", "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.035, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5fc18be6800d4eb807a5a7b19cc2ae9a);
+        
+    
+            polygon_a3ffc7038ddc083c5fc3d18006595fe5.bindTooltip(
+                `<div>
+                     Área de lectura educativa del escenario FEN
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7b84ec03f83a90dc5554d0627f9060e0 = L.marker(
+                [-4.895, -80.716],
+                {
+}
+            ).addTo(feature_group_5fc18be6800d4eb807a5a7b19cc2ae9a);
+        
+    
+            var div_icon_134c43d95ba2cecd5986a42ac129f0ed = L.divIcon({
+  "html": "\n    \u003cdiv style=\"background:rgba(255,152,0,.92);padding:5px 8px;\n    border-radius:6px;color:white;font-weight:bold;font-family:Arial;font-size:11px;\n    box-shadow:0 1px 4px #777;\"\u003eESCENARIO FEN: mayor atenci\u00f3n a lluvia, drenaje y cauces\u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+                marker_7b84ec03f83a90dc5554d0627f9060e0.setIcon(div_icon_134c43d95ba2cecd5986a42ac129f0ed);
+            
+    
+            var layer_control_aa6773db1445c5828961c69b469d929c_layers = {
+                base_layers : {
+                    "Mapa de calles" : tile_layer_a3a45630b1bfcb92fbd498c8360333eb,
+                    "Imagen satelital" : tile_layer_5b5988ed8be0a4a516dd5f5d9db1a50b,
+                },
+                overlays :  {
+                    "\ud83d\udfe0 Peligros pluviales \u2014 12 puntos" : feature_group_794f14ba938ee2260177de914417d526,
+                    "\ud83d\udd35 Peligros fluviales \u2014 2 puntos" : feature_group_7c605821efee2c946a59c212f830b3db,
+                    "\ud83d\udd34 Zonas vulnerables \u2014 referencia hist\u00f3rica" : feature_group_94345d9a423e930e7754d09b4a8058f1,
+                    "\ud83c\udfeb Elementos expuestos" : feature_group_ea1ec3bff375ea6101a9bbaa022814c9,
+                    "\ud83d\udfe2 Propuesta prioritaria" : feature_group_65cc1398563029572d7838c0a75bb728,
+                    "\ud83c\udf27\ufe0f Escenario FEN \u2014 lectura educativa" : feature_group_5fc18be6800d4eb807a5a7b19cc2ae9a,
+                },
+            };
+            let layer_control_aa6773db1445c5828961c69b469d929c = L.control.layers(
+                layer_control_aa6773db1445c5828961c69b469d929c_layers.base_layers,
+                layer_control_aa6773db1445c5828961c69b469d929c_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_484aaa318c90835fce965164beefe825);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_484aaa318c90835fce965164beefe825);
+        
+    
+            var tile_layer_9eecc5a238ec35299cf88bb37cc94788 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_77afcef36f8149a82423ab7b55f407a3 = new L.Control.MiniMap(
+                tile_layer_9eecc5a238ec35299cf88bb37cc94788,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_484aaa318c90835fce965164beefe825.addControl(mini_map_77afcef36f8149a82423ab7b55f407a3);
+        
+    
+            map_484aaa318c90835fce965164beefe825.fitBounds(
+                [[-4.925, -80.725], [-4.885, -80.665]],
+                {}
+            );
+        
+</script>
+</html>
